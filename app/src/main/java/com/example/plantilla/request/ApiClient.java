@@ -34,13 +34,14 @@ public class ApiClient {
     //Para que pueda iniciar sesion
 public Propietario login(String mail, final String password){
         for(Propietario propietario:propietarios){
-            if(propietario.getEmail(email.getText().toString()).equals(mail)&&propietario.getContraseña().equals(password)){
+            if(propietario.getEmail().equals(mail)&&propietario.getContraseña().equals(password)){
                 usuarioActual=propietario;
                 return propietario;
             }
         }
         return null;
 }
+
 
 
 //Retorna el usuario que inició Sesión
@@ -126,8 +127,8 @@ public Propietario login(String mail, final String password){
     private void cargaDatos(){
 
         //Propietarios
-        Propietario juan=new Propietario(1,23492012L,"Juan","Perez","juan@mail.com","123","2664553447");
-        Propietario sonia=new Propietario(2,17495869L,"Sonia","Lucero","sonia@mail.com","123","266485417");
+        Propietario juan= new Propietario(1,23492012L,"Juan","Perez","juan@mail.com","123","2664553447");
+        Propietario sonia= new Propietario(2,17495869L,"Sonia","Lucero","sonia@mail.com","123","266485417");
         propietarios.add(juan);
         propietarios.add(sonia);
 
