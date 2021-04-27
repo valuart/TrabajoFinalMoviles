@@ -10,7 +10,6 @@ public class Propietario {
     private String apellido;
     private String email;
     private String contraseña;
-    private String username;
     private String telefono;
 
     public Propietario() {

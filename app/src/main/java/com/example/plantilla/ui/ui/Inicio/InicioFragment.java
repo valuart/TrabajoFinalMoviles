@@ -14,9 +14,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.plantilla.R;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -42,6 +45,11 @@ public class InicioFragment extends Fragment {
         public void onMapReady(GoogleMap googleMap) {
             mapa = googleMap;
             mapa.addMarker(new MarkerOptions().position(SANlUIS)).setTitle("San Luis");
+
+            CameraPosition camPos = new CameraPosition.Builder().target(SANlUIS).zoom(19).bearing(45).tilt(70).build();
+            CameraUpdate camUpdate = CameraUpdateFactory.newCameraPosition(camPos);
+
+            mapa.animateCamera(camUpdate);
         }
     }
 }

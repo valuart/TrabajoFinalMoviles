@@ -97,13 +97,15 @@ public class MainActivity extends AppCompatActivity {
         String usuario=name.getText().toString();
         String contra=pass.getText().toString();
 
-        if(usuario.equals(sesion.getUsername())&&contra.equals(sesion.getContraseña())){
+       /* if(usuario.equals(sesion.getContraseña())&&contra.equals(sesion.getContraseña())){
             error.setVisibility(View.GONE);
             Intent ingresar=new Intent(this, MenuNavegable.class);
             MainActivity.this.startActivity(ingresar);
         } else {
             error.setVisibility(View.VISIBLE);
-        }
+        }*/
+        Intent ingresar=new Intent(this, MenuNavegable.class);
+        MainActivity.this.startActivity(ingresar);
     }
 
     public void setActionBar(String perfil) {

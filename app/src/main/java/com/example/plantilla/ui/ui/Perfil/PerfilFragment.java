@@ -86,8 +86,8 @@ public class PerfilFragment extends Fragment {
         MainActivity.sesion.setDni((long) Integer.parseInt(dni.getText().toString()));
         MainActivity.sesion.setApellido(apellido.getText().toString());
         MainActivity.sesion.setNombre(nombres.getText().toString());
-        MainActivity.sesion.setTelefono(Integer.parseInt(tel.getText().toString()));
-        MainActivity.sesion.getEmail(email.getText().toString());
+        MainActivity.sesion.setTelefono(tel.getText().toString());
+        MainActivity.sesion.setEmail(email.getText().toString());
         MainActivity.sesion.setContraseña(pass.getText().toString());
 
     }
