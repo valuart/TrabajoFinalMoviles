@@ -65,4 +65,7 @@ public class MenuNavegable extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    public void setActionBarTitle(String cerrar_sesión) {
+    }
 }

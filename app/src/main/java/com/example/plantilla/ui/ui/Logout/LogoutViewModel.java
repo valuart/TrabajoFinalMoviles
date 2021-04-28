@@ -1,19 +1,18 @@
-package com.example.plantilla.ui.ui.Contrato;
+package com.example.plantilla.ui.ui.Logout;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ContratoViewModel extends ViewModel {
+public class LogoutViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public ContratoViewModel() {
+    public LogoutViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is contrato fragment");
+        mText.setValue("This is logout fragment");
     }
 
     public LiveData<String> getText() {
         return mText;
     }
-
 }

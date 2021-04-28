@@ -34,7 +34,7 @@
         tools:layout="@layout/contrato_fragment" />
     <fragment
         android:id="@+id/lougout"
-        android:name="com.example.plantilla.ui.ui.Lougout.LougoutFragment"
+        android:name="com.example.plantilla.ui.ui.Logout.LogoutFragment"
         android:label="Lougout"
-        tools:layout="@layout/lougout_fragment" />
+        tools:layout="@layout/logout_fragment" />
 </navigation>
