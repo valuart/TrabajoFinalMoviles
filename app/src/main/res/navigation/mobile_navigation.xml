@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/inmueble"
-        android:name="com.example.plantilla.ui.ui.Inmueble.InmuebleFragment"
+        android:name="com.example.plantilla.ui.ui.Inmueble.InmueblesFragment"
         android:label="Inmueble"
-        tools:layout="@layout/inmueble_fragment" />
+        tools:layout="@layout/fragment_inmuebles" />
     <fragment
         android:id="@+id/inquilino"
         android:name="com.example.plantilla.ui.ui.Inquilino.InquilinoFragment"
