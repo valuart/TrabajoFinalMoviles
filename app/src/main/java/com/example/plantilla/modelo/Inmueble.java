@@ -14,7 +14,7 @@ public class Inmueble implements Serializable {
     private Propietario propietario;
     //En falso significa que el innmueble no está disponible por alguna falla en el mismo.
     private boolean estado=true;
-    private String imagen;
+    private String imagen; //cambio el tipo porque no me deja usar si es tipo string
 
     public Inmueble(int idInmueble, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean estado, String imagen) {
         this.idInmueble = idInmueble;

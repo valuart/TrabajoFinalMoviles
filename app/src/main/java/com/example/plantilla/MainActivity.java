@@ -14,7 +14,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,8 @@ import com.example.plantilla.modelo.Inquilino;
 import com.example.plantilla.modelo.Pago;
 import com.example.plantilla.modelo.Propietario;
 import com.example.plantilla.ui.MenuNavegable;
+import com.example.plantilla.ui.ui.Inmueble.InmuebleFragment;
+import com.example.plantilla.ui.ui.Inmueble.ListaAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,12 +42,16 @@ public class MainActivity extends AppCompatActivity {
     public static List<Pago> pagos=new ArrayList<>();
     public static List<Inquilino> inquilinos=new ArrayList<>();
     public static List<Contrato> contratos=new ArrayList<>();
+    //sensores
     SensorManager sensorManager;
     Sensor sensor;
     SensorEventListener sensorEventListener;
     long whip=0;
     static final int SHAKE_THRESHOLD = 500;
-
+//fin de sensores
+//Lista de inmueble
+//inmueble
+private ArrayList<Inmueble>lista= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         };
         start();
         //termina el sensor
-
+     GenerarVistaInmueble();
 
         name=findViewById(R.id.name);
         pass=findViewById(R.id.pass);
@@ -110,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setActionBar(String perfil) {
     }
+    //sensor de movimiento
     private void start(){
         sensorManager.registerListener(sensorEventListener, sensor,SensorManager.SENSOR_DELAY_NORMAL);
     }
@@ -134,4 +143,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+    //termina sensor..
+    //lista de inmueble
+ public void GenerarVistaInmueble(){
+     ArrayAdapter<Inmueble> adapter = new ListaAdapter(this, R.layout.item,lista,getLayoutInflater());
+     ListView lv = findViewById(R.id.listaInmueble);
+     lv.setAdapter(adapter);
+    }
+
 }

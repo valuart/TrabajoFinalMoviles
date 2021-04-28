@@ -1,6 +1,7 @@
 package com.example.plantilla.ui.ui.Inmueble;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -23,6 +25,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inmueble;
 
+import java.util.List;
+
 public class InmuebleFragment extends Fragment {
     private Inmueble inmueble;
     private Switch disponible;
@@ -30,8 +34,6 @@ public class InmuebleFragment extends Fragment {
     private Spinner tipo, uso;
     private InmuebleViewModel inmuebleViewModel;
 
-    public InmuebleFragment() {
-    }
 
     public InmuebleFragment(Inmueble i) {
         inmueble = i;
@@ -56,5 +58,7 @@ public class InmuebleFragment extends Fragment {
 
         return root;
     }
-
 }
+
+
+
