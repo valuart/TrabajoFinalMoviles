@@ -33,6 +33,7 @@ public class InmuebleFragment extends Fragment {
     private EditText direccion, ambientes, precio;
     private Spinner tipo, uso;
     private InmuebleViewModel inmuebleViewModel;
+    private ListaAdapter listaAdapter;
 
 
     public InmuebleFragment(Inmueble i) {
@@ -58,6 +59,9 @@ public class InmuebleFragment extends Fragment {
 
         return root;
     }
+
+
+
 }
 
 

@@ -4,6 +4,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.plantilla.modelo.Inmueble;
+import com.example.plantilla.request.ApiClient;
+
+import java.util.ArrayList;
+
 public class InmuebleViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
@@ -16,4 +21,7 @@ public class InmuebleViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
-}
+
+
+
+    }
