@@ -72,7 +72,7 @@ public class ContratosFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contratos, container, false);
         lv = view.findViewById(R.id.listaInmuContratos);
-        vm.leerDatos();
+        vm.obtenerContratoVigente();
         lv.setClickable(true);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
