@@ -22,54 +22,14 @@ import java.util.List;
 import java.util.Locale;
 
 public class ContratoFragment extends Fragment {
-    private Context context;
-    private List<Contrato> lista;
-    private LayoutInflater inflador;
-    private ContratoViewModel mViewModel;
+    private ContratoViewModel vm;
 
-    public ContratoFragment newInstance(@NonNull Context context, int resource, @NonNull List<Contrato> objects, LayoutInflater inflador) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratoViewModel.class);
+        View root = inflater.inflate(R.layout.contrato_fragment, container, false);
 
-        this.context = context;
-        this.lista = objects;
-        this.inflador = inflador;
-
-        return null;
-    }
-
-    @NonNull
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View itemView=convertView;
-        if(itemView==null){
-            itemView=inflador.inflate(R.layout.contrato,parent,false);
-        }
-        Contrato contrato=lista.get(position);
-
-        String inicio = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(contrato.getFechaInicio());
-
-        TextView numero=itemView.findViewById(R.id.fechaInicio);
-        numero.setText(inicio);
-
-        String fin;
-        if(contrato.getFechaFin()!=null){
-            fin = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(contrato.getFechaFin());
-        } else {
-            fin=null;
-        }
-
-        TextView fecha=itemView.findViewById(R.id.fechaFin);
-        fecha.setText(fin);
-
-        TextView importe=itemView.findViewById(R.id.valor);
-        importe.setText("$"+contrato.getMontoAlquiler()+",-");
-
-        TextView valorEn=itemView.findViewById(R.id.valorEn);
-        if(contrato.getFechaFin()==null){
-            valorEn.setText("Vigente");
-        } else {
-            valorEn.setText("Caducado");
-        }
-
-
-        return itemView;
+        return root;
     }
 }

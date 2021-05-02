@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.ui.Contrato.ListaInmuContratoFragment">
+
+    <ListView
+        android:id="@+id/listaInmuContratos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#0089D3"
+        android:dividerHeight="2dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

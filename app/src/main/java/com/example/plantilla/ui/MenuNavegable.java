@@ -3,6 +3,8 @@ package com.example.plantilla.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +13,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,38 +25,47 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MenuNavegable extends AppCompatActivity {
-
+    private EditText email, pass;
+    TextView cartelEmail, cartelPass;
+    Button ingresar;
+    MenuNavegableViewModel Mvm;
 
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_navegable);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        configurarVista();
+        Mvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MenuNavegableViewModel.class);
+        Mvm.getCartelEmail().observe(this, new Observer<String>() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onChanged(String s) {
+                cartelEmail.setText(s);
+                cartelEmail.setTextColor(0xffff0000);
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.inicio, R.id.perfil, R.id.inmueble, R.id.contrato, R.id.inquilino, R.id.lougout)
-                //.setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        Mvm.getCartelPass().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                cartelPass.setText(s);
+                cartelPass.setTextColor(0xffff0000);
+            }
+        });
     }
-
+    private void configurarVista(){
+        email = findViewById(R.id.etEmail);
+        pass = findViewById(R.id.etPass);
+        ingresar = findViewById(R.id.btnIngresar);
+        cartelPass = findViewById(R.id.tvPass);
+        cartelEmail = findViewById(R.id.tvEmail);
+        ingresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mvm.validar(email.getText().toString(), pass.getText().toString());
+            }
+        });
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

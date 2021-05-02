@@ -29,13 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText name, pass;
-    private TextView error;
-    public static Propietario sesion;
-    public static List<Inmueble> inmuebles = new ArrayList<>();
-    public static List<Pago> pagos = new ArrayList<>();
-    public static List<Inquilino> inquilinos = new ArrayList<>();
-    public static List<Contrato> contratos = new ArrayList<>();
+
+
+
     //sensores
     SensorManager sensorManager;
     Sensor sensor;
@@ -89,29 +85,7 @@ public class MainActivity extends AppCompatActivity {
         };
         start();
         //termina el sensor
-        name = findViewById(R.id.name);
-        pass = findViewById(R.id.pass);
-        error = findViewById(R.id.error);
-        ingresar();
 
-
-    }
-
-    public void ingresar() {
-
-        String usuario = name.getText().toString();
-        String contra = pass.getText().toString();
-
-         if (usuario.equals(sesion.getContraseña()) && contra.equals(sesion.getContraseña())) {
-            error.setVisibility(View.GONE);
-            Intent ingresar = new Intent(this, MenuNavegable.class);
-            MainActivity.this.startActivity(ingresar);
-        } else {
-            error.setVisibility(View.VISIBLE);
-        }
-        Intent ingresar = new Intent(this, MenuNavegable.class);
-
-        MainActivity.this.startActivity(ingresar);
     }
 
 

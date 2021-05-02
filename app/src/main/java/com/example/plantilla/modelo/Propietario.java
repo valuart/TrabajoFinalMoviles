@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Propietario {
 
     private int id;
-    private Long dni;
+    private int dni;
     private String nombre;
     private String apellido;
     private String email;
@@ -15,7 +15,7 @@ public class Propietario {
     public Propietario() {
     }
 
-    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono) {
+    public Propietario(int id, int dni, String nombre, String apellido, String email, String contraseña, String telefono) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -33,11 +33,9 @@ public class Propietario {
         this.id = id;
     }
 
-    public Long getDni() {
-        return dni;
-    }
+    public int getDni() { return dni; }
 
-    public void setDni(Long dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 

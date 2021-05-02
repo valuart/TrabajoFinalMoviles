@@ -2,6 +2,7 @@ package com.example.plantilla.ui.ui.Perfil;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,81 +19,95 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.plantilla.MainActivity;
 import com.example.plantilla.R;
+import com.example.plantilla.modelo.Propietario;
 
 public class PerfilFragment extends Fragment {
-    EditText dni, apellido, nombres, tel, email, pass;
-    Button aceptar,editar;
+    private TextView tvResultado;
+    private EditText etDni, etApellido, etNombre, etTelefono, etEmail, etContrasenia;
+    private Button btnEditarPerfil;
+    private PerfilViewModel vm;
+    private Propietario p = new Propietario();
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(PerfilViewModel.class);
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        View root = inflater.inflate(R.layout.perfil_fragment, container, false);
-        ((MainActivity) getActivity()).setActionBar("Perfil");
-
-        dni=root.findViewById(R.id.dni);
-        apellido=root.findViewById(R.id.apellido);
-        nombres=root.findViewById(R.id.nombres);
-        tel=root.findViewById(R.id.tel);
-        email=root.findViewById(R.id.mail);
-        pass=root.findViewById(R.id.pass);
-
-        aceptar=root.findViewById(R.id.aceptar);
-        editar=root.findViewById(R.id.editar);
-
-        fijarDatos();
-
-        editar.setOnClickListener(new View.OnClickListener() {
+        vm.getPropietario().observe(this, new Observer<Propietario>() {
             @Override
-            public void onClick(View v) {
-                editar();
+            public void onChanged(Propietario propietario) {
+                etDni.setText(propietario.getDni());
+                etApellido.setText(propietario.getApellido());
+                etNombre.setText(propietario.getNombre());
+                etTelefono.setText(propietario.getTelefono());
+                etEmail.setText(propietario.getEmail());
+                etContrasenia.setText(propietario.getContraseña());
+
+                p.setId(propietario.getId());
+                p.setDni(propietario.getDni());
+                p.setApellido(propietario.getApellido());
+                p.setNombre(propietario.getNombre());
+                p.setTelefono(propietario.getTelefono());
+                p.setEmail(propietario.getEmail());
+                p.setContraseña(propietario.getContraseña());
             }
         });
+        vm.getEstado().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                etDni.setEnabled(aBoolean);
+                etApellido.setEnabled(aBoolean);
+                etNombre.setEnabled(aBoolean);
+                etTelefono.setEnabled(aBoolean);
+                etEmail.setEnabled(aBoolean);
+                etContrasenia.setEnabled(aBoolean);
+            }
+        });
+        vm.getTextoBoton().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                btnEditarPerfil.setText(s);
+            }
+        });
+        vm.getResultado().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                tvResultado.setText(s);
+                tvResultado.setTextColor(Color.parseColor("#00CB11"));
+                tvResultado.setTextSize(17);
+            }
+        });
+    }
 
-        aceptar.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View root = inflater.inflate(R.layout.perfil_fragment, container, false);
+        tvResultado = root.findViewById(R.id.tvMensaje);
+        etDni = root.findViewById(R.id.etNroDocumento);
+        etApellido = root.findViewById(R.id.etApellido);
+        etNombre = root.findViewById(R.id.etNombre);
+        etTelefono = root.findViewById(R.id.etTelefono);
+        etEmail = root.findViewById(R.id.etEmail);
+        etContrasenia = root.findViewById(R.id.etContrasenia);
+        btnEditarPerfil = root.findViewById(R.id.btnEditarPerfil);
+
+        vm.rellenar();
+
+        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getContext()).setTitle("").setMessage("Desea guardar los datos?").setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        aceptar();
-                        fijarDatos();
-                    }
-                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        fijarDatos();
-                    }
-                }).show();
+                p.setDni(etDni.getText().toString());
+                p.setApellido(etApellido.getText().toString());
+                p.setNombre(etNombre.getText().toString());
+                p.setTelefono(etTelefono.getText().toString());
+                p.setEmail(etEmail.getText().toString());
+                p.setContraseña(etContrasenia.getText().toString());
+                vm.guardar(p);
+                vm.editar();
             }
         });
 
         return root;
-    }
-
-    public void editar(){
-        dni.setEnabled(true);
-        apellido.setEnabled(true);
-        nombres.setEnabled(true);
-        tel.setEnabled(true);
-        email.setEnabled(true);
-        pass.setEnabled(true);
-
-        editar.setVisibility(View.GONE);
-        aceptar.setVisibility(View.VISIBLE);
-
-    }
-
-    public void aceptar(){
-        MainActivity.sesion.setDni((long) Integer.parseInt(dni.getText().toString()));
-        MainActivity.sesion.setApellido(apellido.getText().toString());
-        MainActivity.sesion.setNombre(nombres.getText().toString());
-        MainActivity.sesion.setTelefono(tel.getText().toString());
-        MainActivity.sesion.setEmail(email.getText().toString());
-        MainActivity.sesion.setContraseña(pass.getText().toString());
-
-    }
-
-    public void fijarDatos(){
-
     }
 }
