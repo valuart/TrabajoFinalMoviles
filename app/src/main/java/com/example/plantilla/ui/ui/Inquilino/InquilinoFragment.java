@@ -11,28 +11,46 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.plantilla.R;
+import com.example.plantilla.modelo.Inquilino;
 
 public class InquilinoFragment extends Fragment {
 
-    private InquilinoViewModel mViewModel;
+    private Inquilino inquilino;
+    private EditText cod, nombre, apellido, dni, email, telefono, garante, telGarante;
+    private InquilinoViewModel InqVM;
+    private InquilinosAdapter listaInq;
 
-    public static InquilinoFragment newInstance() {
-        return new InquilinoFragment();
+    public InquilinoFragment (Inquilino i){
+        inquilino = i;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.inquilino_fragment, container, false);
+        View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
+
+        inicializar(root);
+        return root;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(InquilinoViewModel.class);
-        // TODO: Use the ViewModel
+    private void inicializar(View root){
+
+        cod = root.findViewById(R.id.etCod);
+        nombre = root.findViewById(R.id.etNombre);
+        apellido = root.findViewById(R.id.etApellido);
+        dni = root.findViewById(R.id.etDni);
+        email = root.findViewById(R.id.etEmail);
+        telefono = root.findViewById(R.id.etTelefono);
+        garante = root.findViewById(R.id.etGarante);
+        telGarante = root.findViewById(R.id.etTelGarante);
     }
 
 }

@@ -97,7 +97,7 @@ public class PerfilFragment extends Fragment {
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                p.setDni(etDni.getText().toString());
+                p.setDni(Integer.parseInt(etDni.getText().toString()));
                 p.setApellido(etApellido.getText().toString());
                 p.setNombre(etNombre.getText().toString());
                 p.setTelefono(etTelefono.getText().toString());

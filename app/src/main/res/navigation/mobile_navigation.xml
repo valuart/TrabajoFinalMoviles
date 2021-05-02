@@ -24,9 +24,9 @@
         tools:layout="@layout/fragment_inmuebles" />
     <fragment
         android:id="@+id/inquilino"
-        android:name="com.example.plantilla.ui.ui.Inquilino.InquilinoFragment"
+        android:name="com.example.plantilla.ui.ui.Inquilino.InquilinosFragment"
         android:label="Inquilino"
-        tools:layout="@layout/inquilino_fragment" />
+        tools:layout="@layout/fragment_inquilinos" />
     <fragment
         android:id="@+id/contrato"
         android:name="com.example.plantilla.ui.ui.Contrato.ContratoFragment"
