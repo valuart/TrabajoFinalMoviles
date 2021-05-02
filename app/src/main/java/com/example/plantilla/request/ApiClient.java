@@ -25,14 +25,14 @@ public class ApiClient {
         }
         return api;
 
-        }
+    }
 
 
 
 
-//Servicios
+    //Servicios
     //Para que pueda iniciar sesion
-public Propietario login(String mail, final String password){
+    public Propietario login(String mail, final String password){
         for(Propietario propietario:propietarios){
             if(propietario.getEmail().equals(mail)&&propietario.getContraseña().equals(password)){
                 usuarioActual=propietario;
@@ -40,11 +40,10 @@ public Propietario login(String mail, final String password){
             }
         }
         return null;
-}
+    }
 
 
-
-//Retorna el usuario que inició Sesión
+    //Retorna el usuario que inició Sesión
     public Propietario obtenerUsuarioActual(){
         return usuarioActual;
     }
@@ -60,7 +59,7 @@ public Propietario login(String mail, final String password){
         return temp;
     }
 
-//Lista de inmuebles con contratos vigentes del Propietario logueado
+    //Lista de inmuebles con contratos vigentes del Propietario logueado
     public ArrayList<Inmueble> obtenerPropiedadesAlquiladas(){
         ArrayList<Inmueble> temp=new ArrayList<>();
         for(Contrato contrato:contratos){
@@ -93,7 +92,7 @@ public Propietario login(String mail, final String password){
         }
         return null;
     }
-//Dado un Contrato, retorna los pagos de dicho contrato
+    //Dado un Contrato, retorna los pagos de dicho contrato
     public ArrayList<Pago> obtenerPagos(Contrato contratoVer){
         ArrayList<Pago> temp=new ArrayList<>();
         for(Contrato contrato:contratos){
@@ -108,7 +107,7 @@ public Propietario login(String mail, final String password){
         }
         return temp;
     }
-//Actualizar Perfil
+    //Actualizar Perfil
     public void actualizarPerfil(Propietario propietario){
         int posición=propietarios.indexOf(propietario);
         if(posición!=-1){
@@ -127,8 +126,8 @@ public Propietario login(String mail, final String password){
     private void cargaDatos(){
 
         //Propietarios
-        Propietario juan= new Propietario(1,23492012,"Juan","Perez","juan@mail.com","123","2664553447");
-        Propietario sonia= new Propietario(2,17495869,"Sonia","Lucero","sonia@mail.com","123","266485417");
+        Propietario juan=new Propietario(1,23492012L,"Juan","Perez","juan@mail.com","123","2664553447");
+        Propietario sonia=new Propietario(2,17495869L,"Sonia","Lucero","sonia@mail.com","123","266485417");
         propietarios.add(juan);
         propietarios.add(sonia);
 

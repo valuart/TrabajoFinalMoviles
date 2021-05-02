@@ -1,36 +1,30 @@
-package com.example.plantilla.ui.ui.Inmueble;
+package com.example.plantilla.ui.ui.Contrato;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+
 
 import com.example.plantilla.R;
-import com.example.plantilla.modelo.Inmueble;
+import com.example.plantilla.ui.ui.Inmueble.InmueblesFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InmueblesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class InmueblesFragment extends Fragment {
-
-    private InmueblesFragmentViewModel Ivm;
+public class ContratosFragment extends Fragment {
+    private ListView lv;
     private Context contexto;
-    private InmuebleAdapter inmuebleAdapter;
-    private  ListView LvInmuebles;
-    private InmuebleFragment i;
+    private ContratosFragmentViewModel vm;
+    private ContratoAdapter contratoAdapter;
+    private ContratosFragment c;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +35,7 @@ public class InmueblesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public InmueblesFragment() {
+    public ContratosFragment() {
         // Required empty public constructor
     }
 
@@ -54,8 +48,8 @@ public class InmueblesFragment extends Fragment {
      * @return A new instance of fragment InmueblesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static InmueblesFragment newInstance(String param1, String param2) {
-        InmueblesFragment fragment = new InmueblesFragment();
+    public static ContratosFragment newInstance(String param1, String param2) {
+        ContratosFragment fragment = new ContratosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,37 +65,24 @@ public class InmueblesFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    @Override
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=  inflater.inflate(R.layout.fragment_inmuebles, container, false);
-        contexto = root.getContext();
-        inicializarVista(root);
-
-        return root;
-    }
-
-    private void inicializarVista(View v) {
-        LvInmuebles = v.findViewById(R.id.listaInmueble);
-
-        Ivm.getListInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
+        View view = inflater.inflate(R.layout.fragment_contratos, container, false);
+        lv = view.findViewById(R.id.listaInmuContratos);
+        vm.leerDatos();
+        lv.setClickable(true);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onChanged(List<Inmueble> inmuebles) {
-                        //GridLayoutManager gridLayoutManager = new GridLayoutManager(contexto,3,GridLayoutManager.VERTICAL,false);
-
-               inmuebleAdapter = new InmuebleAdapter(contexto,1,inmuebles,getLayoutInflater());
-                LvInmuebles.setAdapter(inmuebleAdapter);
-
-            }
-        });
-        LvInmuebles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView tv = (TextView)view;
                 Bundle bundle = new Bundle();
+                bundle.putString("direccion", tv.getText().toString());
+               // Navigation.findNavController(view).navigate(R.id.nav_contenedor_contrato, bundle);
             }
         });
+        return view;
     }
-
 }

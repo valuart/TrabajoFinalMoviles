@@ -85,7 +85,7 @@ public class InquilinosFragment extends Fragment {
 
     private void inicializarVista(View v) {
         inquilinosLV = v.findViewById(R.id.listaInquilinos);
-        ifvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InquilinosFragmentViewModel.class);
+
         ifvm.getListaInqMutable().observe(getViewLifecycleOwner(), new Observer<List<Inquilino>>() {
 
             @Override

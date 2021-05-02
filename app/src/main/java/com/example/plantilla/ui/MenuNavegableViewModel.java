@@ -7,9 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.plantilla.request.ApiClient;
+
 public class MenuNavegableViewModel extends AndroidViewModel {
     private MutableLiveData<String> cartelEmail;
-    private MutableLiveData<String> cartelPass;
+    private MutableLiveData<Boolean> cartelPass;
     private Context contexto;
 
     public MenuNavegableViewModel(@NonNull Application application) {
@@ -24,25 +26,24 @@ public class MenuNavegableViewModel extends AndroidViewModel {
         return cartelEmail;
     }
 
-    public LiveData<String> getCartelPass() {
+    public LiveData<Boolean> getCartelPass() {
         if (cartelPass == null) {
-            cartelPass = new MutableLiveData<String>();
+            cartelPass = new MutableLiveData<Boolean>();
         }
         return cartelPass;
     }
 
     public void validar(String email, String clave) {
-        final int cantMail = email.length();
-        final int cantContra = clave.length();
-        if (cantMail <= 0) {
-            cartelEmail.setValue("*Obligatorio");
-        } else {
-            cartelEmail.setValue("");
-        }
-        if (cantContra <= 0) {
-            cartelPass.setValue("*Obligatorio");
-        } else {
-            cartelEmail.setValue("");
+        if(email !=null && clave!=null && email.length()>0 && clave.length()>0){
+            ApiClient api= ApiClient.getApi();
+            if (api.login(email, clave)!=null){
+                cartelEmail.setValue("Bienvenidos a Inmobiliaria Team Moviles");
+                cartelPass.setValue(true);
+            }else{
+                cartelEmail.setValue("Mail o contraseña incorrecta");
+            }
+        }else{
+            cartelEmail.setValue("Debe completar todos sus datos");
         }
 
     }

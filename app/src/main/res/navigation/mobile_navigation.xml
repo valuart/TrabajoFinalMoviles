@@ -31,7 +31,7 @@
         android:id="@+id/contrato"
         android:name="com.example.plantilla.ui.ui.Contrato.ContratoFragment"
         android:label="Contrato"
-        tools:layout="@layout/contrato_fragment" />
+        tools:layout="@layout/itemcontrato" />
     <fragment
         android:id="@+id/lougout"
         android:name="com.example.plantilla.ui.ui.Logout.LogoutFragment"

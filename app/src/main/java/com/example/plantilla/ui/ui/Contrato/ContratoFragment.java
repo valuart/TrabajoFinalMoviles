@@ -1,35 +1,43 @@
 package com.example.plantilla.ui.ui.Contrato;
 
-import androidx.lifecycle.ViewModelProvider;
-
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.plantilla.R;
 import com.example.plantilla.modelo.Contrato;
 
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
-
 public class ContratoFragment extends Fragment {
+    private Contrato contrato;
+    private EditText fechaInicio, fechaFin, montoAlquiler;
     private ContratoViewModel vm;
+    private ContratoAdapter listaAdapter;
+
+    public ContratoFragment(Contrato c ) {
+        contrato = c;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratoViewModel.class);
-        View root = inflater.inflate(R.layout.contrato_fragment, container, false);
 
+        View root = inflater.inflate(R.layout.fragment_item_contrato, container, false);
+
+        inicializar(root);
         return root;
+    }
+    private void inicializar(View root) {
+        fechaInicio = root.findViewById(R.id.fechaInicio);
+        fechaFin = root.findViewById(R.id.fechaFin);
+        montoAlquiler = root.findViewById(R.id.importe);
     }
 }

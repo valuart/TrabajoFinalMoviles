@@ -3,19 +3,16 @@ package com.example.plantilla.modelo;
 import java.util.Objects;
 
 public class Propietario {
-
     private int id;
-    private int dni;
+    private Long dni;
     private String nombre;
     private String apellido;
     private String email;
     private String contraseña;
     private String telefono;
 
-    public Propietario() {
-    }
-
-    public Propietario(int id, int dni, String nombre, String apellido, String email, String contraseña, String telefono) {
+    public Propietario(){}
+    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -33,9 +30,11 @@ public class Propietario {
         this.id = id;
     }
 
-    public int getDni() { return dni; }
+    public Long getDni() {
+        return dni;
+    }
 
-    public void setDni(int dni) {
+    public void setDni(Long dni) {
         this.dni = dni;
     }
 
@@ -92,3 +91,5 @@ public class Propietario {
         return Objects.hash(id);
     }
 }
+
+

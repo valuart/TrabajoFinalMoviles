@@ -15,11 +15,12 @@ import com.example.plantilla.modelo.Contrato;
 
 import java.util.List;
 
-public class ListaAdapterContrato extends ArrayAdapter<Contrato> {
+public class ContratoAdapter extends ArrayAdapter<Contrato> {
+
     private Context context;
     private List<Contrato> lista;
     private LayoutInflater li;
-    public ListaAdapterContrato(@NonNull Context context, int resource, @NonNull List<Contrato> objects, LayoutInflater li) {
+    public ContratoAdapter(@NonNull Context context, int resource, @NonNull List<Contrato> objects, LayoutInflater li) {
         super(context, resource, objects);
         this.context = context;
         this.lista = objects;
@@ -31,7 +32,7 @@ public class ListaAdapterContrato extends ArrayAdapter<Contrato> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View itemView = convertView;
         if(itemView==null){
-            itemView = li.inflate(R.layout.contrato_fragment, parent, false);
+            itemView = li.inflate(R.layout.itemcontrato, parent, false);
         }
         Contrato contrato = lista.get(position);
 

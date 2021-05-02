@@ -3,7 +3,6 @@ package com.example.plantilla.modelo;
 import java.io.Serializable;
 
 public class Inquilino implements Serializable {
-
     private int idInquilino;
     private Long DNI;
     private String nombre;
@@ -99,4 +98,5 @@ public class Inquilino implements Serializable {
     public void setTelefonoGarante(String telefonoGarante) {
         this.telefonoGarante = telefonoGarante;
     }
+
 }
