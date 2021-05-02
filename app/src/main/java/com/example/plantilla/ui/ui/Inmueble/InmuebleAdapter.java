@@ -1,11 +1,14 @@
 package com.example.plantilla.ui.ui.Inmueble;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +20,20 @@ import com.example.plantilla.modelo.Inmueble;
 import java.util.List;
 
 //Agrego la Lista de inmuebles
-public class ListaAdapter extends ArrayAdapter<Inmueble> {
+public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
+
     private Context contexto;
-    private List<Inmueble> lista;
+    private List<Inmueble> inmuebles;
     private LayoutInflater li;
+
+    public InmuebleAdapter(@NonNull Context context, int resource, @NonNull List<Inmueble> objects, LayoutInflater li) {
+        super(context, resource, objects);
+        this.contexto = context;
+        this.inmuebles = objects;
+        this.li = li;
+    }
+
+
 
     @NonNull
     @Override
@@ -30,7 +43,7 @@ public class ListaAdapter extends ArrayAdapter<Inmueble> {
         if (itemView == null) {
             itemView = li.inflate(R.layout.item, parent, false);
         }
-        Inmueble i = lista.get(position);
+        Inmueble i = inmuebles.get(position);
 
         ImageView foto = itemView.findViewById(R.id.foto);
         foto.setImageResource(Integer.parseInt(i.getImagen()));
@@ -43,12 +56,4 @@ public class ListaAdapter extends ArrayAdapter<Inmueble> {
         return itemView;
     }
 
-    public ListaAdapter(@NonNull Context context, int resource, @NonNull List<Inmueble> objects, LayoutInflater li) {
-        super(context, resource, objects);
-        this.contexto = context;
-        this.lista = objects;
-        this.li = li;
-
-
-    }
 }

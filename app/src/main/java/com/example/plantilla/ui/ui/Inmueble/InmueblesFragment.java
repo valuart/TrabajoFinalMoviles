@@ -1,14 +1,23 @@
 package com.example.plantilla.ui.ui.Inmueble;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.plantilla.R;
+import com.example.plantilla.modelo.Inmueble;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +25,12 @@ import com.example.plantilla.R;
  * create an instance of this fragment.
  */
 public class InmueblesFragment extends Fragment {
+
+    private InmueblesFragmentViewModel Ivm;
+    private Context contexto;
+    private InmuebleAdapter inmuebleAdapter;
+    private  ListView LvInmuebles;
+    private InmuebleFragment i;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,11 +71,37 @@ public class InmueblesFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inmuebles, container, false);
+        View root=  inflater.inflate(R.layout.fragment_inmuebles, container, false);
+        contexto = root.getContext();
+        inicializarVista(root);
+
+        return root;
     }
+
+    private void inicializarVista(View v) {
+        LvInmuebles = v.findViewById(R.id.listaInmueble);
+        Ivm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesFragmentViewModel.class);
+        Ivm.getListInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
+            @Override
+            public void onChanged(List<Inmueble> inmuebles) {
+                        //GridLayoutManager gridLayoutManager = new GridLayoutManager(contexto,3,GridLayoutManager.VERTICAL,false);
+
+               inmuebleAdapter = new InmuebleAdapter(contexto,1,inmuebles,getLayoutInflater());
+                LvInmuebles.setAdapter(inmuebleAdapter);
+
+            }
+        });
+        LvInmuebles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+            }
+        });
+    }
+
 }
