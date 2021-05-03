@@ -27,7 +27,7 @@ public class InicioFragment extends Fragment {
 
     private InicioViewModel inicioViewModel;
     private GoogleMap mapa;
-    private static final LatLng SANlUIS = new LatLng(-33.280576, -66.332482);
+    private static final LatLng inmobiliaria = new LatLng(-33.29690, -66.33100);
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,9 +44,9 @@ public class InicioFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mapa = googleMap;
-            mapa.addMarker(new MarkerOptions().position(SANlUIS)).setTitle("San Luis");
+            mapa.addMarker(new MarkerOptions().position(inmobiliaria)).setTitle("Inmobiliaria Petrino");
 
-            CameraPosition camPos = new CameraPosition.Builder().target(SANlUIS).zoom(19).bearing(45).tilt(70).build();
+            CameraPosition camPos = new CameraPosition.Builder().target(inmobiliaria).zoom(19).bearing(45).tilt(70).build();
             CameraUpdate camUpdate = CameraUpdateFactory.newCameraPosition(camPos);
 
             mapa.animateCamera(camUpdate);
