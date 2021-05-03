@@ -1,5 +1,6 @@
 package com.example.plantilla.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -35,30 +37,18 @@ public class MenuNavegable extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-<<<<<<< HEAD
         DrawerLayout drawer = findViewById(R.id.drawable_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.inicio, R.id.perfil, R.id.inmueble,R.id.contrato, R.id.inquilino, R.id.lougout)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.inicio, R.id.perfil, R.id.inmueble, R.id.contrato, R.id.inquilino, R.id.lougout)
                 //.setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-=======
 
-        Mvm.getCartelPass().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Intent intent = new Intent(getApplicationContext(), MenuNavegation.class);
-                    startActivity(intent);
-                }
-            }
-        });
 
->>>>>>> 2abfe399c91e0fa4ecb3a3b280b02b7db3b865b3
     }
 
     @Override
@@ -68,16 +58,13 @@ public class MenuNavegable extends AppCompatActivity {
         return true;
     }
 
-<<<<<<< HEAD
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-=======
 
 }
->>>>>>> 2abfe399c91e0fa4ecb3a3b280b02b7db3b865b3
 
-}
+

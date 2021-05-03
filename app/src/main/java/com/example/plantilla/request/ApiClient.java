@@ -26,10 +26,6 @@ public class ApiClient {
         return api;
 
     }
-
-
-
-
     //Servicios
     //Para que pueda iniciar sesion
     public Propietario login(String mail, final String password){

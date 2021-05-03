@@ -31,8 +31,7 @@ public class InicioFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        inicioViewModel =
-                new ViewModelProvider(this).get(InicioViewModel.class);
+        inicioViewModel = new ViewModelProvider(this).get(InicioViewModel.class);
         View root = inflater.inflate(R.layout.inicio_fragment, container, false);
 
         ((SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(new MapaActual());
@@ -44,7 +43,7 @@ public class InicioFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mapa = googleMap;
-            mapa.addMarker(new MarkerOptions().position(inmobiliaria)).setTitle("Inmobiliaria Petrino");
+            mapa.addMarker(new MarkerOptions().position(inmobiliaria)).setTitle("Inmobiliaria Team Moviles");
 
             CameraPosition camPos = new CameraPosition.Builder().target(inmobiliaria).zoom(19).bearing(45).tilt(70).build();
             CameraUpdate camUpdate = CameraUpdateFactory.newCameraPosition(camPos);

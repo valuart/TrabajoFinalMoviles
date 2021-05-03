@@ -41,8 +41,7 @@ public class LoginMainActivity extends AppCompatActivity implements SensorEventL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_Login);
+        setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && checkSelfPermission(Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) ;
@@ -71,7 +70,7 @@ public class LoginMainActivity extends AppCompatActivity implements SensorEventL
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
-                    Intent intent = new Intent(getApplicationContext(), LoginMainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MenuNavegable.class);
                     startActivity(intent);
                 }
             }
