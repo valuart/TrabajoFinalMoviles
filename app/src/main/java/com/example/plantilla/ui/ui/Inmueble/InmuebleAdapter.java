@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 
-import com.example.plantilla.ui.ui.MenuNavegable.R;
+import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inmueble;
 
 import java.util.List;

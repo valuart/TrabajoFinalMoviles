@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.plantilla.ui.ui.MenuNavegable.R;
+import com.example.plantilla.R;
 import com.example.plantilla.modelo.Propietario;
 
 public class PerfilFragment extends Fragment {

@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.example.plantilla.ui.ui.MenuNavegable.R;
+import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inquilino;
 
 public class InquilinoFragment extends Fragment {

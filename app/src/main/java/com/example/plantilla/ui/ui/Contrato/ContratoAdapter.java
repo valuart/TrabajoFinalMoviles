@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 
 import com.example.plantilla.modelo.Contrato;
-import com.example.plantilla.ui.ui.MenuNavegable.R;
+import com.example.plantilla.R;
 import java.util.List;
 
 public class ContratoAdapter extends ArrayAdapter<Contrato> {

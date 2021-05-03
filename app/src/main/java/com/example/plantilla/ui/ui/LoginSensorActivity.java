@@ -23,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.plantilla.ui.ui.MenuNavegable.R;
+import com.example.plantilla.R;
 
 public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
     private EditText etEmail, etPass;
