@@ -1,4 +1,9 @@
-package com.example.plantilla.ui;
+package com.example.plantilla;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.Context;
@@ -18,14 +23,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.plantilla.R;
+import com.example.plantilla.ui.LoginViewModel;
+import com.example.plantilla.ui.ui.MenuNavegable;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class LoginMainActivity extends AppCompatActivity implements SensorEventListener {
+public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
     private EditText etEmail, etPass;
     private Button btnIngresar;
     private TextView cartelEmail, cartelPass;
@@ -43,7 +44,7 @@ public class LoginMainActivity extends AppCompatActivity implements SensorEventL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && checkSelfPermission(Manifest.permission.CALL_PHONE)
+                && checkSelfPermission(android.Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) ;
 
         requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1000);
@@ -53,7 +54,7 @@ public class LoginMainActivity extends AppCompatActivity implements SensorEventL
         Mvm.getCartelEmail().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String mensaje) {
-                new AlertDialog.Builder(LoginMainActivity.this)
+                new AlertDialog.Builder(LoginSensorActivity.this)
                         .setTitle("Advertencia!")
                         .setMessage(mensaje)
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -149,4 +150,3 @@ public class LoginMainActivity extends AppCompatActivity implements SensorEventL
     }
     //termina sensor..
 }
-
