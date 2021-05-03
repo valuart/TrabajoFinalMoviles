@@ -92,20 +92,23 @@ public class PerfilFragment extends Fragment {
         etContrasenia = root.findViewById(R.id.etContrasenia);
         btnEditarPerfil = root.findViewById(R.id.btnEditarPerfil);
 
-        vm.rellenar();
+
 
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 p.setDni(Long.parseLong(etDni.getText().toString()));
                 //p.setDni(etDni.getText().toString());
+=======
+                p.setDni((long) Integer.parseInt(etDni.getText().toString()));
+>>>>>>> 2abfe399c91e0fa4ecb3a3b280b02b7db3b865b3
                 p.setApellido(etApellido.getText().toString());
                 p.setNombre(etNombre.getText().toString());
                 p.setTelefono(etTelefono.getText().toString());
                 p.setEmail(etEmail.getText().toString());
                 p.setContraseña(etContrasenia.getText().toString());
-                vm.guardar(p);
-                vm.editar();
+
             }
         });
 
