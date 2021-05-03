@@ -61,7 +61,7 @@ public class MenuNavegable extends AppCompatActivity {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
-                    Intent intent = new Intent(getApplicationContext(), MenuNavegable.class);
+                    Intent intent = new Intent(getApplicationContext(), MenuNavegation.class);
                     startActivity(intent);
                 }
             }
@@ -80,5 +80,6 @@ public class MenuNavegable extends AppCompatActivity {
         });
     }
 
-    }
+
+}
 

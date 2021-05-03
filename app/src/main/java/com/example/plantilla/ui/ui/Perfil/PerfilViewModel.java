@@ -56,29 +56,16 @@ public class PerfilViewModel extends ViewModel {
         return resultado;
     }
 
-    public void rellenar(){
-        SharedPreferences pref = context.getSharedPreferences("token", 0);
-        String t = pref.getString("token", "vacio");
-
-            }
-
-    public void editar(){
-        if(estado.getValue()){
-            textoBoton.setValue("Guardar");
-            resultado.setValue("");
-        }else{
-            textoBoton.setValue("Editar");
-        }
-    }
-    public void guardar(Propietario prop){
-        if(estado.getValue()){
-            SharedPreferences pref = context.getSharedPreferences("token", 0);
-            String t = pref.getString("token", "vacio");
-
-
-        }else{
-            estado.setValue(true);
-        }
+    public void ObtenerDatos(){
+        ApiClient apiClient = ApiClient.getApi();
+        Propietario p = apiClient.obtenerUsuarioActual();
+        propietarioMutableLiveData.setValue(p);
     }
 
+    public void Editar(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono){
+        ApiClient apiClient = ApiClient.getApi();
+        Propietario propietario = new Propietario(id, dni, nombre, apellido, email, contraseña, telefono);
+        apiClient.actualizarPerfil(propietario);
+        propietarioMutableLiveData.setValue(propietario);
+    }
 }
