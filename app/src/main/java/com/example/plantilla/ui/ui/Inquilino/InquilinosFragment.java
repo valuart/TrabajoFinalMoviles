@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.plantilla.R;
+import com.example.plantilla.ui.ui.MenuNavegable.R;
 import com.example.plantilla.modelo.Inmueble;
 import com.example.plantilla.modelo.Inquilino;
 import com.example.plantilla.ui.ui.Inmueble.InmuebleFragment;

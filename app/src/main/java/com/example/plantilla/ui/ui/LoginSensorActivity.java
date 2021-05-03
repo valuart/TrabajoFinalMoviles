@@ -1,10 +1,5 @@
 package com.example.plantilla.ui.ui;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,9 +17,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.example.plantilla.R;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.plantilla.ui.ui.MenuNavegable.R;
 
 public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
     private EditText etEmail, etPass;
@@ -91,7 +90,7 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
     }
     private void inicializarVista() {
         etEmail = findViewById(R.id.etEmail);
-        etPass = findViewById(R.id.etContrasenia);
+        etPass = findViewById(R.id.etPass);
         btnIngresar = findViewById(R.id.btnIngresar);
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override

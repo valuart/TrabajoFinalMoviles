@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.plantilla.R;
-import com.example.plantilla.modelo.Contrato;
 
+import com.example.plantilla.modelo.Contrato;
+import com.example.plantilla.ui.ui.MenuNavegable.R;
 import java.util.List;
 
 public class ContratoAdapter extends ArrayAdapter<Contrato> {

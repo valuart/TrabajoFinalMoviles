@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.plantilla.R;
+import com.example.plantilla.ui.ui.MenuNavegable.R;
 
 public class LogoutFragment extends Fragment {
     private View v;

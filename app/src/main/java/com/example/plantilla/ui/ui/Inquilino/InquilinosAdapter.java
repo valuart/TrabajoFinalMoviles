@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.plantilla.R;
+import com.example.plantilla.ui.ui.MenuNavegable.R;
 import com.example.plantilla.modelo.Inmueble;
 import com.example.plantilla.modelo.Inquilino;
 
