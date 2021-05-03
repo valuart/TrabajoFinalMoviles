@@ -22,7 +22,7 @@
             android:required="false" />
 
         <activity
-            android:name=".ui.MenuNavegable"
+            android:name=".ui.LoginMainActivity"
             android:label="@string/title_activity_menu_navegable"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <meta-data android:name="com.google.android.gms.version"

@@ -1,7 +1,9 @@
 package com.example.plantilla.ui.ui.Inmueble;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 
 import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inmueble;
@@ -37,15 +40,15 @@ public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull final ViewGroup parent) {
         // return super.getView(position, convertView, parent);
         View itemView = convertView;
         if (itemView == null) {
             itemView = li.inflate(R.layout.item, parent, false);
         }
-        Inmueble i = inmuebles.get(position);
+        final Inmueble i = inmuebles.get(position);
 
-        ImageView foto = itemView.findViewById(R.id.foto);
+        final ImageView foto = itemView.findViewById(R.id.foto);
         foto.setImageResource(Integer.parseInt(i.getImagen()));
 
         TextView direccion = itemView.findViewById(R.id.Direccion);
@@ -53,6 +56,18 @@ public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
 
         TextView precio = itemView.findViewById(R.id.Precio);
         precio.setText(i.getPrecio() + "");
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle  bundle = new Bundle();
+                 Inmueble inmueble = inmuebles.get(getPosition(i));
+                       bundle.putSerializable("inmubeles", inmueble);
+                Navigation.findNavController((Activity) contexto, R.id.nav_host_fragment).navigate(R.id.inmueble,bundle);
+
+            }
+
+        });
         return itemView;
     }
 

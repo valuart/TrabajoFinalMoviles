@@ -21,17 +21,56 @@
         android:id="@+id/inmueble"
         android:name="com.example.plantilla.ui.ui.Inmueble.InmueblesFragment"
         android:label="Inmueble"
-        tools:layout="@layout/fragment_inmuebles" />
+        tools:layout="@layout/fragment_inmuebles" >
+        <action
+            android:id="@+id/action_inmueble_to_ItemInmueble"
+            app:destination="@id/ItemInmueble" />
+    </fragment>
+    <fragment
+        android:id="@+id/ItemInmueble"
+        android:name="com.example.plantilla.ui.ui.Inmueble.InmuebleFragment"
+        android:label="Inmueble"
+        tools:layout="@layout/fragment_item_inmueble" >
+        <action
+            android:id="@+id/action_ItemInmueble_to_inmueble"
+            app:destination="@id/inmueble" />
+    </fragment>
     <fragment
         android:id="@+id/inquilino"
         android:name="com.example.plantilla.ui.ui.Inquilino.InquilinosFragment"
         android:label="Inquilino"
-        tools:layout="@layout/fragment_inquilinos" />
+        tools:layout="@layout/fragment_inquilinos" >
+        <action
+            android:id="@+id/action_inquilino_to_ItemInquilino"
+            app:destination="@id/ItemInquilino" />
+    </fragment>
+    <fragment
+        android:id="@+id/ItemInquilino"
+        android:name="com.example.plantilla.ui.ui.Inquilino.InquilinoFragment"
+        android:label="Inquilino"
+        tools:layout="@layout/inquilino_fragment" >
+        <action
+            android:id="@+id/action_ItemInquilino_to_inquilino"
+            app:destination="@id/inquilino" />
+    </fragment>
     <fragment
         android:id="@+id/contrato"
         android:name="com.example.plantilla.ui.ui.Contrato.ContratoFragment"
         android:label="Contrato"
-        tools:layout="@layout/itemcontrato" />
+        tools:layout="@layout/itemcontrato" >
+        <action
+            android:id="@+id/action_contrato_to_ItemContrato"
+            app:destination="@id/ItemContrato" />
+    </fragment>
+    <fragment
+    android:id="@+id/ItemContrato"
+    android:name="com.example.plantilla.ui.ui.Contrato.ContratosFragment"
+    android:label="Contrato"
+    tools:layout="@layout/fragment_item_contrato" >
+        <action
+            android:id="@+id/action_ItemContrato_to_contrato"
+            app:destination="@id/contrato" />
+    </fragment>
     <fragment
         android:id="@+id/lougout"
         android:name="com.example.plantilla.ui.ui.Logout.LogoutFragment"

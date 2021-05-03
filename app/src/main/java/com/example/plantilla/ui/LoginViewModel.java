@@ -9,12 +9,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.plantilla.request.ApiClient;
 
-public class MenuNavegableViewModel extends AndroidViewModel {
+public class LoginViewModel extends AndroidViewModel {
     private MutableLiveData<String> cartelEmail;
     private MutableLiveData<Boolean> cartelPass;
     private Context contexto;
 
-    public MenuNavegableViewModel(@NonNull Application application) {
+    public LoginViewModel(@NonNull Application application) {
         super(application);
         contexto = getApplication().getApplicationContext();
     }

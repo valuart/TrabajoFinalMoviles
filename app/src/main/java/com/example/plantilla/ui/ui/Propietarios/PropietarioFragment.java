@@ -1,5 +1,6 @@
 package com.example.plantilla.ui.ui.Propietarios;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +17,7 @@ import com.example.plantilla.R;
  * create an instance of this fragment.
  */
 public class PropietarioFragment extends Fragment {
-
+    private Context contexto;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +62,14 @@ public class PropietarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_propietario, container, false);
+        View root = inflater.inflate(R.layout.fragment_propietario, container, false);
+        contexto = root.getContext();
+        inicializarVista(root);
+        return root;
     }
+
+    public void inicializarVista(View v){
+
+    }
+
 }

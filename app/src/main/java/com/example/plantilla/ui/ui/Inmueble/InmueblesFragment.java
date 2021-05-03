@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -86,6 +87,9 @@ public class InmueblesFragment extends Fragment {
     private void inicializarVista(View v) {
         LvInmuebles = v.findViewById(R.id.listaInmueble);
 
+    Ivm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesFragmentViewModel.class);
+        Ivm.leerDatos();
+
         Ivm.getListInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
             public void onChanged(List<Inmueble> inmuebles) {
@@ -96,12 +100,9 @@ public class InmueblesFragment extends Fragment {
 
             }
         });
-        LvInmuebles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-            }
-        });
+
+        
     }
 
 }
+

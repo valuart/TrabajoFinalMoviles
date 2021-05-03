@@ -35,7 +35,7 @@ public class PerfilFragment extends Fragment {
         vm.getPropietario().observe(this, new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
-                etDni.setText(propietario.getDni());
+                etDni.setText(propietario.getDni().toString());
                 etApellido.setText(propietario.getApellido());
                 etNombre.setText(propietario.getNombre());
                 etTelefono.setText(propietario.getTelefono());
@@ -97,7 +97,8 @@ public class PerfilFragment extends Fragment {
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                p.setDni(Integer.parseInt(etDni.getText().toString()));
+                p.setDni(Long.parseLong(etDni.getText().toString()));
+                //p.setDni(etDni.getText().toString());
                 p.setApellido(etApellido.getText().toString());
                 p.setNombre(etNombre.getText().toString());
                 p.setTelefono(etTelefono.getText().toString());
