@@ -1,4 +1,4 @@
-package com.example.plantilla.ui;
+package com.example.plantilla.ui.ui;
 
 import android.app.Application;
 import android.content.Context;

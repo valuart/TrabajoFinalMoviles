@@ -43,6 +43,7 @@ public class InicioFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mapa = googleMap;
+            googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
             mapa.addMarker(new MarkerOptions().position(inmobiliaria)).setTitle("Inmobiliaria Team Moviles");
 
             CameraPosition camPos = new CameraPosition.Builder().target(inmobiliaria).zoom(19).bearing(45).tilt(70).build();

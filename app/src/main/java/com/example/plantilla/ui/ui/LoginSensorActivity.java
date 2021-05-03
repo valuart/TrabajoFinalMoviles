@@ -1,4 +1,4 @@
-package com.example.plantilla;
+package com.example.plantilla.ui.ui;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +22,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
-import com.example.plantilla.ui.LoginViewModel;
-import com.example.plantilla.ui.ui.MenuNavegable;
+import com.example.plantilla.R;
 
 public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
     private EditText etEmail, etPass;
@@ -43,6 +43,7 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && checkSelfPermission(android.Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) ;
