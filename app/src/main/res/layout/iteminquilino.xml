@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         tools:srcCompat="@tools:sample/avatars" />
-    <TextView
-        android:id="@+id/tvDireccion"
+
+    <EditText
+        android:id="@+id/etDireccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
@@ -23,7 +24,7 @@
         android:id="@+id/btnVer"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
-        android:layout_height="98dp"
+        android:layout_height="116dp"
         android:layout_weight="1"
         android:background="#1F3EEC"
         android:onClick="MostrarDatosInquilino"

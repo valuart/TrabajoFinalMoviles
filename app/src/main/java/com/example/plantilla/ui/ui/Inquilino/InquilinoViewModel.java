@@ -10,18 +10,19 @@ import com.example.plantilla.request.ApiClient;
 
 public class InquilinoViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    private MutableLiveData<Inquilino> mutableInq;
+    private MutableLiveData<Inquilino> InqMutable;
     private Inmueble inmu;
-    public LiveData<Inquilino> InquilinoViewModel() {
-        if(mutableInq == null){
-            mutableInq = new MutableLiveData<>();
+
+    public LiveData<Inquilino> getInquilinoViewModel() {
+        if(InqMutable == null){
+            InqMutable = new MutableLiveData<>();
         }
-        return mutableInq;
+        return InqMutable;
     }
 
     public void obtenerInquilino()  {
         ApiClient api = ApiClient.getApi();
         Inquilino inq = api.obtenerInquilino(inmu);
-        mutableInq.setValue(inq);
+        InqMutable.setValue(inq);
     }
 }
