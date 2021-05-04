@@ -34,4 +34,6 @@ public class ContratosFragmentViewModel extends ViewModel {
         ArrayList<Inmueble> i= Api.obtenerPropiedadesAlquiladas();
 
     }
+
+
 }

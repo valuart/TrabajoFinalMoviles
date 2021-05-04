@@ -12,13 +12,13 @@ import com.example.plantilla.R;
 import com.example.plantilla.modelo.Contrato;
 
 public class ContratoFragment extends Fragment {
-    private Contrato contrato;
+    private Contrato contratos;
     private EditText fechaInicio, fechaFin, montoAlquiler;
     private ContratoViewModel vm;
     private ContratoAdapter listaAdapter;
 
     public ContratoFragment(Contrato c ) {
-        contrato = c;
+        contratos = c;
     }
 
     @Override

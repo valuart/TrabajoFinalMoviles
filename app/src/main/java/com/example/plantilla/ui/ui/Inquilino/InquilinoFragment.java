@@ -29,18 +29,27 @@ public class InquilinoFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
 
         inicializar(root);
-        return root;
+        //colocar el observer al objeto mutable del viewModel
+        InqVM.getInquilinoViewModel().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
+            @Override
+            public void onChanged(Inquilino inquilino) {
+                cod.setText(inquilino.getIdInquilino());
+                nombre.setText(inquilino.getNombre());
+                apellido.setText(inquilino.getApellido());
+                dni.setText(inquilino.getDNI().toString());
+                email.setText(inquilino.getEmail());
+                telefono.setText(inquilino.getEmail());
+                garante.setText(inquilino.getNombreGarante());
+                telGarante.setText(inquilino.getTelefonoGarante());
+            }
+        });
 
+        return root;
     }
 
     private void inicializar(View root){

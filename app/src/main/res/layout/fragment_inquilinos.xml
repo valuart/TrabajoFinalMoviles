@@ -9,12 +9,12 @@
         android:id="@+id/tvlista"
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:text="Lista de Inquilinos" />
+        android:text="Lista de Inmuebles" />
 
     <ListView
-        android:id="@+id/listaInquilinos"
+        android:id="@+id/listaInmuebles"
         android:layout_width="match_parent"
-        android:layout_height="462dp" />
+        android:layout_height="match_parent" />
 </FrameLayout>
 
 

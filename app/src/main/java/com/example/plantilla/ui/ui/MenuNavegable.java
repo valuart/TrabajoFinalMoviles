@@ -48,7 +48,7 @@ public class MenuNavegable extends AppCompatActivity  {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration  = new AppBarConfiguration.Builder(R.id.inicio, R.id.perfil, R.id.inmueble, R.id.contrato, R.id.inquilino, R.id.lougout)//.setDrawerLayout(drawer)
+        mAppBarConfiguration  = new AppBarConfiguration.Builder(R.id.nav_inicio, R.id.nav_perfil, R.id.nav_inmuebles, R.id.nav_inquilinos, R.id.nav_contratos, R.id.nav_logout)//.setDraw<<<<erLayout(drawer)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

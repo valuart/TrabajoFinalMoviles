@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +42,7 @@ public class InquilinosAdapter extends ArrayAdapter<Inquilino> {
         ImageView foto = itemInq.findViewById(R.id.imagen);
         foto.setImageResource(Integer.parseInt(i.getImagen()));
 
-        TextView direccion = itemInq.findViewById(R.id.tvDireccion);
+        TextView direccion = itemInq.findViewById(R.id.etDireccion);
         direccion.setText(i.getDireccion());
 
         return itemInq;

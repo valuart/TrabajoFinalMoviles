@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.plantilla.R;
+import com.example.plantilla.ui.ui.LoginSensorActivity;
 import com.example.plantilla.ui.ui.MenuNavegable;
 
 public class LogoutFragment extends Fragment {
@@ -43,7 +44,7 @@ public class LogoutFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         salir = true;
-                        startActivity(new Intent(getActivity(), MenuNavegable.class));
+                        startActivity(new Intent(getActivity(), LoginSensorActivity.class));
                     }
                 }).show();
     }

@@ -15,19 +15,20 @@ import java.util.List;
 
 public class InquilinosFragmentViewModel extends ViewModel {
 
-    private MutableLiveData <List<Inquilino>> listaInqMutable;
+    private MutableLiveData <List<Inmueble>> listaInmuebleMutable;
     private Context context;
     private Inmueble inmueble;
 
-    public LiveData<List<Inquilino>> getListaInqMutable(){
-        if(listaInqMutable == null){
-            listaInqMutable = new MutableLiveData<>();
+    public LiveData<List<Inmueble>> getListaInmuebleMutable(){
+        if(listaInmuebleMutable == null){
+            listaInmuebleMutable = new MutableLiveData<>();
         }
-         return listaInqMutable;
+         return listaInmuebleMutable;
     }
 
-    public void obtenerInquilino(){
+    public void obtenerPropiedades(){
         ApiClient Api = ApiClient.getApi();
-        Inquilino inq = Api.obtenerInquilino(inmueble);
+        List<Inmueble> lista = Api.obtenerPropiedadesAlquiladas();
+        listaInmuebleMutable.setValue(lista);
     }
 }
