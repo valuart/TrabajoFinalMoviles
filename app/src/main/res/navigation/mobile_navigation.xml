@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/inicio">
+    app:startDestination="@+id/nav_inicio">
 
     <fragment
-        android:id="@+id/inicio"
+        android:id="@+id/nav_inicio"
         android:name="com.example.plantilla.ui.ui.Inicio.InicioFragment"
         android:label="Inicio"
         tools:layout="@layout/inicio_fragment" />
 
     <fragment
-        android:id="@+id/perfil"
+        android:id="@+id/nav_perfil"
         android:name="com.example.plantilla.ui.ui.Perfil.PerfilFragment"
         android:label="Perfil"
         tools:layout="@layout/perfil_fragment" >
@@ -22,7 +22,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/inmueble"
+        android:id="@+id/nav_inmuebles"
         android:name="com.example.plantilla.ui.ui.Inmueble.InmueblesFragment"
         android:label="Inmueble"
         tools:layout="@layout/fragment_inmuebles" >
@@ -37,10 +37,10 @@
         tools:layout="@layout/fragment_item_inmueble" >
         <action
             android:id="@+id/action_ItemInmueble_to_inmueble"
-            app:destination="@id/inmueble" />
+            app:destination="@id/nav_inmuebles" />
     </fragment>
     <fragment
-        android:id="@+id/inquilino"
+        android:id="@+id/nav_inquilinos"
         android:name="com.example.plantilla.ui.ui.Inquilino.InquilinosFragment"
         android:label="Inquilino"
         tools:layout="@layout/fragment_inquilinos" >
@@ -55,10 +55,10 @@
         tools:layout="@layout/inquilino_fragment" >
         <action
             android:id="@+id/action_ItemInquilino_to_inquilino"
-            app:destination="@id/inquilino" />
+            app:destination="@id/nav_inquilinos" />
     </fragment>
     <fragment
-        android:id="@+id/contrato"
+        android:id="@+id/nav_contratos"
         android:name="com.example.plantilla.ui.ui.Contrato.ContratoFragment"
         android:label="Contrato"
         tools:layout="@layout/itemcontrato" >
@@ -73,10 +73,10 @@
     tools:layout="@layout/fragment_item_contrato" >
         <action
             android:id="@+id/action_ItemContrato_to_contrato"
-            app:destination="@id/contrato" />
+            app:destination="@id/nav_contratos" />
     </fragment>
     <fragment
-        android:id="@+id/lougout"
+        android:id="@+id/nav_logout"
         android:name="com.example.plantilla.ui.ui.Logout.LogoutFragment"
         android:label="Lougout"
         tools:layout="@layout/logout_fragment" />
@@ -87,6 +87,6 @@
         tools:layout="@layout/fragment_editar" >
         <action
             android:id="@+id/action_editarPropietarioFragment_to_perfil"
-            app:destination="@id/perfil" />
+            app:destination="@id/nav_perfil" />
     </fragment>
 </navigation>

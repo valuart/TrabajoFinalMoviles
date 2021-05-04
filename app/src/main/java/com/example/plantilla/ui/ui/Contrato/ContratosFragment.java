@@ -56,7 +56,7 @@ public class ContratosFragment extends Fragment {
                 TextView tv = (TextView)view;
                 Bundle bundle = new Bundle();
                 bundle.putString("direccion", tv.getText().toString());
-                Navigation.findNavController(view).navigate(R.id.contrato, bundle);
+               // Navigation.findNavController(view).navigate(R.id.contrato, bundle);
             }
         });
         return view;

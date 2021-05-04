@@ -63,7 +63,7 @@ public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
                 Bundle  bundle = new Bundle();
                  Inmueble inmueble = inmuebles.get(getPosition(i));
                        bundle.putSerializable("inmubeles", inmueble);
-                Navigation.findNavController((Activity) contexto, R.id.nav_host_fragment).navigate(R.id.inmueble,bundle);
+               // Navigation.findNavController((Activity) contexto, R.id.nav_host_fragment).navigate(R.id.inmueble,bundle);
 
             }
 
