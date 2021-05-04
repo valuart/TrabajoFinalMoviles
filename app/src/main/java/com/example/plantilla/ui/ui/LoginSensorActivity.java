@@ -1,6 +1,8 @@
 package com.example.plantilla.ui.ui;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,19 +20,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.plantilla.R;
 
 public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
     private EditText etEmail, etPass;
     private Button btnIngresar;
-    private TextView cartelEmail, cartelPass;
+    private TextView cartelEmail; //, cartelPass;
     private LoginViewModel Mvm;
-    private Context contexto;
+    //private Context contexto;
     //sensores
     SensorManager sensorManager;
     Sensor sensor;
@@ -52,19 +54,20 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
         Mvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
         inicializarVista();
         Mvm.getCartelEmail().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String mensaje) {
-                new AlertDialog.Builder(LoginSensorActivity.this)
-                        .setTitle("Advertencia!")
-                        .setMessage(mensaje)
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onChanged(String mensaje) {
+                        new AlertDialog.Builder(LoginSensorActivity.this)
+                                .setTitle("Advertencia!")
+                                .setMessage(mensaje)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        }).show();
+                                    }
+                                }).show();
 
-            }
+
+                    }
         });
 
         Mvm.getCartelPass().observe(this, new Observer<Boolean>() {
@@ -72,10 +75,13 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     Intent intent = new Intent(getApplicationContext(), MenuNavegable.class);
+                  //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
             }
         });
+
+
 
         //Sensor de movimiento
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -96,6 +102,7 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
             @Override
             public void onClick(View v) {
                 Mvm.validar(etEmail.getText().toString(), etPass.getText().toString());
+
             }
         });
     }
@@ -108,10 +115,10 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
         if (s.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = event.values[0];
             long currentTime = System.currentTimeMillis();
-            if ((currentTime - whip) > 120) {
+            if ((currentTime - whip) > 60) {
                 long dif = (currentTime - whip);
                 whip = currentTime;
-                float mover = Math.abs(x) / dif * 700;
+                float mover = Math.abs(x) / dif * 100000;
                 if (mover > SHAKE_THRESHOLD) {
                     hacerLlamada();
                 }

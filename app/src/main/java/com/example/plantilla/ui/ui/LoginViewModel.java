@@ -2,13 +2,18 @@ package com.example.plantilla.ui.ui;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.plantilla.modelo.Propietario;
 import com.example.plantilla.request.ApiClient;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class LoginViewModel extends AndroidViewModel {
     private MutableLiveData<String> cartelEmail;
@@ -37,14 +42,14 @@ public class LoginViewModel extends AndroidViewModel {
     public void validar(String email, String clave) {
         if(email !=null && clave!=null && email.length()>0 && clave.length()>0){
             ApiClient api= ApiClient.getApi();
-            if (api.login(email, clave)!=null){
-                cartelEmail.setValue("Bienvenidos a Inmobiliaria Team Moviles");
-                cartelPass.setValue(true);
+            Propietario propietario = api.login(email, clave);
+            if (propietario != null){
+                cartelEmail.setValue("Usuario y/o Contraseña incorrectos!");
             }else{
-                cartelEmail.setValue("Mail o contraseña incorrecta");
+                cartelPass.setValue(true);
             }
         }else{
-            cartelEmail.setValue("Debe completar todos sus datos");
+            cartelEmail.setValue("Los campos no pueden estar vacios");
         }
 
     }
