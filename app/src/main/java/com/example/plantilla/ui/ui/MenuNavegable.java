@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MenuNavegable extends AppCompatActivity {
+    TextView titulo,secundario;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -41,6 +43,8 @@ public class MenuNavegable extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.inicio, R.id.perfil, R.id.inmueble, R.id.contrato, R.id.inquilino, R.id.lougout)
                 .setDrawerLayout(drawer)
                 .build();

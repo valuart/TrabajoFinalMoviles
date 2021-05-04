@@ -21,21 +21,23 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+        <activity
+        android:name=".ui.ui.MenuNavegable"
+        android:label="@string/title_activity_menu_navegable"
+        android:theme="@style/AppTheme.NoActionBar"></activity>
+     <activity android:name=".ui.ui.LoginSensorActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <meta-data android:name="com.google.android.gms.version"
              android:value="@integer/google_play_services_version" />
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBEEVjTKQ-GyzQnXWpASVZklpAdrda2BNU" />
 
-        <activity android:name="com.example.plantilla.ui.ui.MenuNavegable"
-            android:label="MenuNavegable"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

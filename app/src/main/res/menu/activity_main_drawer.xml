@@ -4,33 +4,32 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/nav_perfil"
-        android:icon="@drawable/ic_menu_manage"
-        android:title="Perfil" />
-    <item
-        android:id="@+id/nav_inmuebles"
-        android:icon="@drawable/ic_menu_camera"
-        android:title="Inmuebles" />
-    <item
-        android:id="@+id/nav_inquilinos"
-        android:icon="@drawable/ic_menu_slideshow"
-        android:title="Inquilinos" />
-    <item
-        android:id="@+id/nav_pagos"
-        android:icon="@drawable/ic_menu_camera"
-        android:title="Pagos" />
-    <item
-        android:id="@+id/nav_contratos"
-        android:icon="@drawable/ic_menu_share"
-        android:title="Contratos" />
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/nav_inmuebles"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Inmuebles" />
+       <item
+            android:id="@+id/nav_inquilinos"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Inquilinos" />
+      <item
+            android:id="@+id/nav_contratos"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Contratos" />
+      <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Cerrar Sesión" />
 
-    <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/ic_menu_send"
-        android:title="Cerrar Sesión" />
-
-</group>
+    </group>
 
 
     </menu>

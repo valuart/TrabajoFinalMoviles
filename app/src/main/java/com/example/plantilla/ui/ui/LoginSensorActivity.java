@@ -1,6 +1,7 @@
 package com.example.plantilla.ui.ui;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,15 +23,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.plantilla.R;
+import com.example.plantilla.modelo.Propietario;
+
+import static android.app.PendingIntent.getActivity;
+import static java.security.AccessController.getContext;
 
 public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
     private EditText etEmail, etPass;
     private Button btnIngresar;
+    public static Propietario sesion;
     private TextView cartelEmail, cartelPass;
     private LoginViewModel Mvm;
-    private Context contexto;
+    private Context context;
+
     //sensores
     SensorManager sensorManager;
     Sensor sensor;
@@ -88,18 +96,6 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
         }
         start();
     }
-    private void inicializarVista() {
-        etEmail = findViewById(R.id.etEmail);
-        etPass = findViewById(R.id.etPass);
-        btnIngresar = findViewById(R.id.btnIngresar);
-        btnIngresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Mvm.validar(etEmail.getText().toString(), etPass.getText().toString());
-            }
-        });
-    }
-
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -149,4 +145,22 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
 
     }
     //termina sensor..
+    private void inicializarVista() {
+        etEmail = findViewById(R.id.etEmail);
+        etPass = findViewById(R.id.etPass);
+        btnIngresar = findViewById(R.id.btnIngresar);
+        btnIngresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                        Mvm.validar(
+                                etEmail.getText().toString(),
+                                etPass.getText().toString()
+                        );
+
+                 //   Navigation.findNavController((Activity)getContext(), R.id.nav_host_fragment).navigate(R.id.nav_perfil);
+                    }
+
+        });
+
+    }
 }
