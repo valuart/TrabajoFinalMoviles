@@ -56,17 +56,15 @@ public class LoginSensorActivity extends AppCompatActivity  {
         Mvm.getCartelMensaje().observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(String mensaje) {
-                        new AlertDialog.Builder(LoginSensorActivity.this)
+                        new AlertDialog.Builder(getApplicationContext())
                                 .setTitle("Advertencia!")
                                 .setMessage(mensaje)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    public void onClick(DialogInterface dialog, int i) {
 
                                     }
                                 }).show();
-
-
                     }
         });
 
