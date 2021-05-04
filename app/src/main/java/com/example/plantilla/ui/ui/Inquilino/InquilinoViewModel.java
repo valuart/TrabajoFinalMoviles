@@ -4,16 +4,24 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.plantilla.modelo.Inmueble;
+import com.example.plantilla.modelo.Inquilino;
+import com.example.plantilla.request.ApiClient;
+
 public class InquilinoViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    private MutableLiveData<String> mText;
-
-    public InquilinoViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+    private MutableLiveData<Inquilino> mutableInq;
+    private Inmueble inmu;
+    public LiveData<Inquilino> InquilinoViewModel() {
+        if(mutableInq == null){
+            mutableInq = new MutableLiveData<>();
+        }
+        return mutableInq;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void obtenerInquilino()  {
+        ApiClient api = ApiClient.getApi();
+        Inquilino inq = api.obtenerInquilino(inmu);
+        mutableInq.setValue(inq);
     }
 }

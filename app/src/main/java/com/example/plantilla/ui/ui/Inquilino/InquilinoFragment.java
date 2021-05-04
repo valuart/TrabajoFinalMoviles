@@ -1,5 +1,6 @@
 package com.example.plantilla.ui.ui.Inquilino;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -23,7 +24,7 @@ public class InquilinoFragment extends Fragment {
     private InquilinoViewModel InqVM;
     private InquilinosAdapter listaInq;
 
-    public InquilinoFragment (Inquilino i){
+    public InquilinoFragment(Inquilino i) {
         inquilino = i;
     }
 
@@ -38,7 +39,14 @@ public class InquilinoFragment extends Fragment {
         View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
 
         inicializar(root);
+         /* InqVM.obtenerInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
+            @Override
+            public void onChanged(Inquilino inquilino) {
+
+            }
+        })*/
         return root;
+
     }
 
     private void inicializar(View root){

@@ -16,6 +16,7 @@ import com.example.plantilla.request.ApiClient;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class LoginViewModel extends AndroidViewModel {
+
     private MutableLiveData<String> cartelEmail;
     private MutableLiveData<Boolean> cartelPass;
     private Context contexto;
