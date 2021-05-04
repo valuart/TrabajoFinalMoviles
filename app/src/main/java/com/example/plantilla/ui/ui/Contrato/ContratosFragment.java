@@ -33,13 +33,13 @@ public class ContratosFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Cvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratosFragmentViewModel.class);
-        Cvm.getListaDirecciones().observe(this, (Observer<? super ArrayList<Contrato>>) new Observer<List<String>>() {
+       /* Cvm.getListaDirecciones().observe(this, (Observer<? super ArrayList<Contrato>>) new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> strings) {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, strings);
                 lvc.setAdapter(adapter);
             }
-        });
+        })*/;
     }
 
     @Override

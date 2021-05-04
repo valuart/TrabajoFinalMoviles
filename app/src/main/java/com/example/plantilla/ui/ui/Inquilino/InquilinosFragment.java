@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.plantilla.R;
@@ -18,6 +19,7 @@ import com.example.plantilla.modelo.Inquilino;
 import com.example.plantilla.ui.ui.Inmueble.InmuebleFragment;
 import com.example.plantilla.ui.ui.Inmueble.InmueblesFragmentViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,10 +69,7 @@ public class InquilinosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -79,6 +78,15 @@ public class InquilinosFragment extends Fragment {
         // Inflamos el Layout para este fragment
         View root = inflater.inflate(R.layout.fragment_inquilinos, container, false);
         context = root.getContext();
+        /*inquilinosLV = root.findViewById(R.id.listaInquilinos);
+        ifvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InquilinosFragmentViewModel.class);
+        ifvm.getListaInqMutable().observe(getViewLifecycleOwner(), Observer< ArrayList<Inquilino> > new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> strings) {
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1);
+                inquilinosLV.setAdapter(adapter);
+            }
+        });*/
         inicializarVista(root);
         return root;
     }

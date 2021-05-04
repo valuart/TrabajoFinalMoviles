@@ -53,7 +53,7 @@ public class LoginSensorActivity extends AppCompatActivity  {
 
         Mvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
         inicializarVista();
-        Mvm.getCartelEmail().observe(this, new Observer<String>() {
+        Mvm.getCartelMensaje().observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(String mensaje) {
                         new AlertDialog.Builder(LoginSensorActivity.this)
@@ -70,7 +70,7 @@ public class LoginSensorActivity extends AppCompatActivity  {
                     }
         });
 
-        Mvm.getCartelPass().observe(this, new Observer<Boolean>() {
+        Mvm.getCartelOk().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {

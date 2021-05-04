@@ -17,8 +17,8 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class LoginViewModel extends AndroidViewModel {
 
-    private MutableLiveData<String> cartelEmail;
-    private MutableLiveData<Boolean> cartelPass;
+    private MutableLiveData<String> cartelMensaje;
+    private MutableLiveData<Boolean> cartelOk;
     private Context contexto;
 
     public LoginViewModel(@NonNull Application application) {
@@ -26,31 +26,31 @@ public class LoginViewModel extends AndroidViewModel {
         contexto = getApplication().getApplicationContext();
     }
 
-    public LiveData<String> getCartelEmail() {
-        if (cartelEmail == null) {
-            cartelEmail = new MutableLiveData<String>();
+    public LiveData<String> getCartelMensaje() {
+        if (cartelMensaje == null) {
+            cartelMensaje = new MutableLiveData<String>();
         }
-        return cartelEmail;
+        return cartelMensaje;
     }
 
-    public LiveData<Boolean> getCartelPass() {
-        if (cartelPass == null) {
-            cartelPass = new MutableLiveData<Boolean>();
+    public LiveData<Boolean> getCartelOk() {
+        if (cartelOk == null) {
+            cartelOk = new MutableLiveData<Boolean>();
         }
-        return cartelPass;
+        return cartelOk;
     }
 
     public void validar(String usuario, String contrasenia){
-        if(usuario !=null && contrasenia!=null && usuario.length()>0 && contrasenia.length()>0){
+        if(usuario != null && contrasenia != null && usuario.length()>0 && contrasenia.length()>0){
             ApiClient api= ApiClient.getApi();
-            if (api.login(usuario, contrasenia)!=null){
-                cartelEmail.setValue("Bienvenidos a nuestra Inmobiliaria");
-                cartelPass.setValue(true);
+            Propietario p = api.login(usuario, contrasenia);
+            if (p == null){
+                cartelMensaje.setValue("Mail y/o contraseña incorrectos");
             }else{
-                cartelEmail.setValue("Datos incorrectos, por favor intente nuevamente");
+                cartelOk.setValue(true);
             }
         }else{
-            cartelEmail.setValue("Por favor complete todos los campos");
+            cartelMensaje.setValue("Por favor complete todos los campos");
         }
 
 

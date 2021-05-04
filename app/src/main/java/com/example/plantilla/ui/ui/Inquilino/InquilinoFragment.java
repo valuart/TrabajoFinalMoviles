@@ -39,12 +39,6 @@ public class InquilinoFragment extends Fragment {
         View root = inflater.inflate(R.layout.inquilino_fragment, container, false);
 
         inicializar(root);
-         /* InqVM.obtenerInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
-            @Override
-            public void onChanged(Inquilino inquilino) {
-
-            }
-        })*/
         return root;
 
     }
