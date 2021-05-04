@@ -1,6 +1,7 @@
 package com.example.plantilla.ui.ui.Inmueble;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 
 import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inmueble;
+import com.example.plantilla.ui.ui.MenuNavegable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +37,12 @@ public class InmueblesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+   // private static final String ARG_PARAM1 = "param1";
+    //private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //private String mParam1;
+    //private String mParam2;
 
     public InmueblesFragment() {
         // Required empty public constructor
@@ -50,16 +52,17 @@ public class InmueblesFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param //param1 Parameter 1.
+     * @param //param2 Parameter 2.
      * @return A new instance of fragment InmueblesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static InmueblesFragment newInstance(String param1, String param2) {
+    public static InmueblesFragment newInstance() {
         InmueblesFragment fragment = new InmueblesFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
+      //  args.putString(ARG_PARAM1, param1);
+       // args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,17 +70,19 @@ public class InmueblesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+       // if (getArguments() != null) {
+         //   mParam1 = getArguments().getString(ARG_PARAM1);
+           // mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
-    }
+    //}
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=  inflater.inflate(R.layout.fragment_inmuebles, container, false);
+        View root=  inflater.inflate(R.layout.fragment_inmuebles, container , true);
         contexto = root.getContext();
         inicializarVista(root);
 
@@ -93,9 +98,8 @@ public class InmueblesFragment extends Fragment {
         Ivm.getListInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
             public void onChanged(List<Inmueble> inmuebles) {
-                        //GridLayoutManager gridLayoutManager = new GridLayoutManager(contexto,3,GridLayoutManager.VERTICAL,false);
 
-               inmuebleAdapter = new InmuebleAdapter(contexto,1,inmuebles,getLayoutInflater());
+               inmuebleAdapter = new InmuebleAdapter(contexto,1, inmuebles ,getLayoutInflater());
                 LvInmuebles.setAdapter(inmuebleAdapter);
 
             }

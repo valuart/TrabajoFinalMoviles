@@ -11,17 +11,18 @@ import java.util.ArrayList;
 
 public class InmuebleViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
-
-    public InmuebleViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }
-
-
+    private MutableLiveData<Inmueble> InmuebleMutable;
+    private Inmueble inm;
+   public LiveData<Inmueble> getInmuebleMutable(){
+       if(InmuebleMutable == null){
+           InmuebleMutable = new MutableLiveData<>();
+       }
+       return InmuebleMutable;
+   }
+public void ObtenerDetalles(){
+       ApiClient api = ApiClient.getApi();
+       api.actualizarInmueble(inm);
+       InmuebleMutable.setValue(inm);
+}
 
     }

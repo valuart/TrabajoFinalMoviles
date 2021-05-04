@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Tipo:" />
 
-    <Spinner
+    <EditText
         android:id="@+id/tipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Uso:" />
 
-    <Spinner
+    <EditText
         android:id="@+id/uso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

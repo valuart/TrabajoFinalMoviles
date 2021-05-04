@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inmueble;
@@ -16,8 +17,7 @@ import com.example.plantilla.modelo.Inmueble;
 public class InmuebleFragment extends Fragment {
     private Inmueble inmueble;
     private Switch disponible;
-    private EditText direccion, ambientes, precio;
-    private Spinner tipo, uso;
+    private EditText direccion, ambientes, precio,tipo, uso;;
     private InmuebleViewModel inmuebleViewModel;
     private InmuebleAdapter listaAdapter;
 
@@ -35,9 +35,19 @@ public class InmuebleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_item_inmueble, container, false);
-
-
         inicializar(root);
+        inmuebleViewModel.getInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
+            @Override
+            public void onChanged(Inmueble inmueble) {
+                direccion.setText(inmueble.getDireccion());
+                ambientes.setText(inmueble.getAmbientes());
+                precio.setText(inmueble.getPrecio()+"");
+                tipo.setText(inmueble.getTipo());
+                uso.setText(inmueble.getUso());
+                disponible.setText(inmueble.isEstado()+"");
+            }
+        });
+        inmuebleViewModel.ObtenerDetalles();
         return root;
     }
 
