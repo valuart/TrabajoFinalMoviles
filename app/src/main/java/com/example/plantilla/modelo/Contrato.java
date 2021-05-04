@@ -23,6 +23,7 @@ public class Contrato implements Serializable {
         this.inmueble = inmueble;
     }
 
+
     public int getIdContrato() {
         return idContrato;
     }

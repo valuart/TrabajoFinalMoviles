@@ -29,9 +29,9 @@ public class ContratosFragmentViewModel extends ViewModel {
         return listDireccionesMutable;
     }
 
-    public void obtenerContratoVigente(){
+    public void cargarDatos(){
         ApiClient Api = ApiClient.getApi();
-        Contrato c = Api.obtenerContratoVigente(inmueble);
+        ArrayList<Inmueble> i= Api.obtenerPropiedadesAlquiladas();
 
     }
 }

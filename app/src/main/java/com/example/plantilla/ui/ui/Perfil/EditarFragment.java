@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -21,18 +20,18 @@ import com.example.plantilla.R;
 import com.example.plantilla.modelo.Propietario;
 import com.example.plantilla.ui.ui.MenuNavegable;
 
-public class EditarPropietarioFragment extends Fragment {
-    private EditarPropietarioViewModel editarPropietarioViewModel;
+public class EditarFragment extends Fragment {
+    private EditarViewModel editarPropietarioViewModel;
     public EditText etDni, etNombre, etApellido, etEmail, etTelefono;
     public Button btnGuardar;
     private Propietario usuarioActual;
 
-    public static EditarPropietarioFragment newInstance() {
-        return new EditarPropietarioFragment();
+    public static EditarFragment newInstance() {
+        return new EditarFragment();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        editarPropietarioViewModel= new ViewModelProvider(this).get(EditarPropietarioViewModel.class);
+        editarPropietarioViewModel= new ViewModelProvider(this).get(EditarViewModel.class);
         View root = inflater.inflate(R.layout.fragment_editar, container, false);
 
         InicializarVista(root);

@@ -40,18 +40,20 @@ public class LoginViewModel extends AndroidViewModel {
         return cartelPass;
     }
 
-    public void validar(String email, String clave) {
-        if(email !=null && clave!=null && email.length()>0 && clave.length()>0){
+    public void validar(String usuario, String contrasenia){
+        if(usuario !=null && contrasenia!=null && usuario.length()>0 && contrasenia.length()>0){
             ApiClient api= ApiClient.getApi();
-            Propietario propietario = api.login(email, clave);
-            if (propietario != null){
-                cartelEmail.setValue("Usuario y/o Contraseña incorrectos!");
-            }else{
+            if (api.login(usuario, contrasenia)!=null){
+                cartelEmail.setValue("Bienvenidos a nuestra Inmobiliaria");
                 cartelPass.setValue(true);
+            }else{
+                cartelEmail.setValue("Datos incorrectos, por favor intente nuevamente");
             }
         }else{
-            cartelEmail.setValue("Los campos no pueden estar vacios");
+            cartelEmail.setValue("Por favor complete todos los campos");
         }
+
+
 
     }
 }

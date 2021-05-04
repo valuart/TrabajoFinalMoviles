@@ -9,11 +9,7 @@
         android:id="@+id/inicio"
         android:name="com.example.plantilla.ui.ui.Inicio.InicioFragment"
         android:label="Inicio"
-        tools:layout="@layout/inicio_fragment" >
-        <action
-            android:id="@+id/action_inicio_to_perfil"
-            app:destination="@id/perfil" />
-    </fragment>
+        tools:layout="@layout/inicio_fragment" />
 
     <fragment
         android:id="@+id/perfil"
@@ -86,7 +82,7 @@
         tools:layout="@layout/logout_fragment" />
     <fragment
         android:id="@+id/editarPropietarioFragment"
-        android:name="com.example.plantilla.ui.ui.Perfil.EditarPropietarioFragment"
+        android:name="com.example.plantilla.ui.ui.Perfil.EditarFragment"
         android:label="fragment_editar"
         tools:layout="@layout/fragment_editar" >
         <action

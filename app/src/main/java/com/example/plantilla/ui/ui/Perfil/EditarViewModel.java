@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.plantilla.modelo.Propietario;
 import com.example.plantilla.request.ApiClient;
 
-public class EditarPropietarioViewModel extends ViewModel {
+public class EditarViewModel extends ViewModel {
     public MutableLiveData<Propietario> usuarioMutable;
     public MutableLiveData<String> okMutable;
 
