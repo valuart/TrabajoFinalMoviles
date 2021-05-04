@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.plantilla.R;
 import com.example.plantilla.modelo.Inmueble;
+import com.example.plantilla.ui.ui.Inicio.InicioViewModel;
 import com.example.plantilla.ui.ui.MenuNavegable;
 
 import java.util.ArrayList;
@@ -82,30 +84,25 @@ public class InmueblesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root=  inflater.inflate(R.layout.fragment_inmuebles, container , true);
+        Ivm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesFragmentViewModel.class);
+      //  Ivm = new ViewModelProvider(this).get(InicioViewModel.class);
+        View root=  inflater.inflate(R.layout.fragment_inmuebles, container , false);
         contexto = root.getContext();
         inicializarVista(root);
-
+        Ivm.getListInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
+            @Override
+            public void onChanged(List<Inmueble> inmuebles) {
+                List<Inmueble> lista = (List<Inmueble>) Ivm.getListInmuebleMutable();
+                ArrayAdapter<Inmueble> adapter = new ArrayAdapter<Inmueble>(getContext(),android.R.layout.simple_list_item_1, lista);
+                LvInmuebles.setAdapter(adapter);
+            }
+        });
         return root;
     }
 
     private void inicializarVista(View v) {
         LvInmuebles = v.findViewById(R.id.listaInmueble);
 
-    Ivm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesFragmentViewModel.class);
-        Ivm.leerDatos();
-
-        Ivm.getListInmuebleMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
-            @Override
-            public void onChanged(List<Inmueble> inmuebles) {
-
-               inmuebleAdapter = new InmuebleAdapter(contexto,1, inmuebles ,getLayoutInflater());
-                LvInmuebles.setAdapter(inmuebleAdapter);
-
-            }
-        });
-
-        
     }
 
 }
