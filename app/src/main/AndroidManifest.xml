@@ -21,10 +21,7 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-        <activity
-            android:name=".ui.ui.MenuNavegable"
-            android:label="@string/title_activity_menu_navegable"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity android:name=".ui.ui.LoginSensorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

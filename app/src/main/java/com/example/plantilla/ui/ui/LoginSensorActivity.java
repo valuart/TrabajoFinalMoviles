@@ -27,18 +27,18 @@ import androidx.navigation.Navigation;
 
 import com.example.plantilla.R;
 
-public class LoginSensorActivity extends AppCompatActivity implements SensorEventListener {
+public class LoginSensorActivity extends AppCompatActivity  {
     private EditText etEmail, etPass;
     private Button btnIngresar;
     private TextView cartelEmail; //, cartelPass;
     private LoginViewModel Mvm;
     //private Context contexto;
     //sensores
-    SensorManager sensorManager;
-    Sensor sensor;
-    SensorEventListener sensorEventListener;
-    long whip = 0;
-    static final int SHAKE_THRESHOLD = 500;
+    private SensorManager sensorManager;
+    private Sensor sensor;
+    private SensorEventListener sensorEventListener;
+    private long whip = 0;
+    private static final int SHAKE_THRESHOLD = 600;
     //fin de sensores
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     Intent intent = new Intent(getApplicationContext(), MenuNavegable.class);
-                  //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
             }
@@ -92,8 +92,32 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
             Toast.makeText(this, "Usted no cuenta con este tipo de sensor.", Toast.LENGTH_LONG).show();
             finish();
         }
-        start();
+        sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                Sensor s = event.sensor;
+
+                if (s.getType() == Sensor.TYPE_ACCELEROMETER) {
+                    float x = event.values[0];
+                    long currentTime = System.currentTimeMillis();
+                    if ((currentTime - whip) > 100) {
+                        long dif = (currentTime - whip);
+                        whip = currentTime;
+                        float mover = Math.abs(x) / dif * 100000;
+                        if (mover > SHAKE_THRESHOLD) {
+                            hacerLlamada();
+                        }
+                    }
+                }
+               start();
+            }
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
     }
+
     private void inicializarVista() {
         etEmail = findViewById(R.id.etEmail);
         etPass = findViewById(R.id.etPass);
@@ -107,30 +131,6 @@ public class LoginSensorActivity extends AppCompatActivity implements SensorEven
         });
     }
 
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        Sensor s = event.sensor;
-
-        if (s.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float x = event.values[0];
-            long currentTime = System.currentTimeMillis();
-            if ((currentTime - whip) > 60) {
-                long dif = (currentTime - whip);
-                whip = currentTime;
-                float mover = Math.abs(x) / dif * 100000;
-                if (mover > SHAKE_THRESHOLD) {
-                    hacerLlamada();
-                }
-            }
-        }
-    }
-
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
     private void start(){
         sensorManager.registerListener(sensorEventListener, sensor,SensorManager.SENSOR_DELAY_NORMAL);
     }
