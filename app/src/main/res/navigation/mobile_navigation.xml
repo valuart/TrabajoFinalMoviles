@@ -9,13 +9,21 @@
         android:id="@+id/inicio"
         android:name="com.example.plantilla.ui.ui.Inicio.InicioFragment"
         android:label="Inicio"
-        tools:layout="@layout/inicio_fragment" />
+        tools:layout="@layout/inicio_fragment" >
+        <action
+            android:id="@+id/action_inicio_to_perfil"
+            app:destination="@id/perfil" />
+    </fragment>
 
     <fragment
         android:id="@+id/perfil"
         android:name="com.example.plantilla.ui.ui.Perfil.PerfilFragment"
         android:label="Perfil"
-        tools:layout="@layout/perfil_fragment" />
+        tools:layout="@layout/perfil_fragment" >
+        <action
+            android:id="@+id/action_perfil_to_editarPropietarioFragment"
+            app:destination="@id/editarPropietarioFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/inmueble"
@@ -76,4 +84,13 @@
         android:name="com.example.plantilla.ui.ui.Logout.LogoutFragment"
         android:label="Lougout"
         tools:layout="@layout/logout_fragment" />
+    <fragment
+        android:id="@+id/editarPropietarioFragment"
+        android:name="com.example.plantilla.ui.ui.Perfil.EditarPropietarioFragment"
+        android:label="fragment_editar"
+        tools:layout="@layout/fragment_editar" >
+        <action
+            android:id="@+id/action_editarPropietarioFragment_to_perfil"
+            app:destination="@id/perfil" />
+    </fragment>
 </navigation>
