@@ -12,15 +12,26 @@
     <uses-permission android:name="com.google.android.providers.gdf.permission.READ_GSERVICES"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="plantilla"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/ic_launcher_background"
+        android:label="Menu Navegable"
+        android:roundIcon="@drawable/ic_launcher_background"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic ="true">
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBEEVjTKQ-GyzQnXWpASVZklpAdrda2BNU" />
+
+        <activity
+            android:name=".ui.ui.MenuNavegable"
+            android:label="@string/title_activity_menu_navegable"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".ui.ui.LoginSensorActivity">
             <intent-filter>
@@ -29,20 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data android:name="com.google.android.gms.version"
              android:value="@integer/google_play_services_version" />
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBEEVjTKQ-GyzQnXWpASVZklpAdrda2BNU" />
-        <activity
-            android:name=".ui.ui.MenuNavegable"
-            android:label="Plantilla"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+   
     </application>
 
 </manifest>
